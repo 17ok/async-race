@@ -1,0 +1,45 @@
+{
+    "plugins": ["import", "@typescript-eslint", "react"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/jsx-runtime"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+          }
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true
+    },
+    "rules": {
+        "no-debugger": "off",
+        "no-console": 0,
+        "class-methods-use-this": "off",
+        "@typescript-eslint/no-explicit-any": 2,
+        "@typescript-eslint/rule-name": "error",
+        "react/jsx-no-bind": ["error", {
+            "allowArrowFunctions": true,
+            "allowBind": false,
+            "ignoreRefs": true
+          }],
+          "react/no-did-update-set-state": "error",
+          "react/no-unknown-property": "error",
+          "react/no-unused-prop-types": "error",
+          "react/prop-types": "error",
+          "react/react-in-jsx-scope": "off",
+          "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", "ts", "tsx"] }],
+          "prettier/prettier": "off"
+    },
+    "settings": {
+        "react": {
+          "version": "detect"
+        }
+      }
+}
