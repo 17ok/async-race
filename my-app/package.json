@@ -1,5 +1,6 @@
 {
   "name": "my-app",
+  "homepage": "https://rolling-scopes-school.github.io/17ok-JSFE2022Q1/async-race",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
