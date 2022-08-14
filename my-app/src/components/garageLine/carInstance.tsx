@@ -1,4 +1,4 @@
-import { Key, ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from "react";
+//import { Key, ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from "react";
 import CarIcon from "./carIcon";
 
 type CarInstanceProps = {

@@ -1,18 +1,14 @@
 import GarageLine from "../garageLine/garageLine";
 import Create from "../carOptions/create";
-import Generate from "../allCarControls/generate";
-import Race from "../allCarControls/race";
-import Reset from "../allCarControls/reset";
 import Update from "../carOptions/update";
 import { AllCarControls, CarOptions, GarageContainer } from "./styles";
-import { useEffect, useReducer, useState } from "react";
-import randomCarsArray from "../../helpers/randomCar"
+import { useEffect, useState } from "react";
+//import randomCarsArray from "../../helpers/randomCar"
 
-import { ICar, IState, TCars } from "../types/types";
+//import { ICar, IState, TCars } from "../types/types";
 import { Endpoints } from "../../helpers/url";
-import randomColor from "../../helpers/randomCarColor";
-import CarInstance from "../garageLine/carInstance";
-import PagesControls from "../pages/pagesControls";
+//import randomColor from "../../helpers/randomCarColor";
+//import CarInstance from "../garageLine/carInstance";
 
 export async function getCars(page: number){ 
     try{
@@ -47,12 +43,52 @@ export function Garage() {
   //  const [carState, setCarState] = useState([]) ;
    
   useEffect(() => {  getCars(page).then((result) => setState({...state,cars: result.pageCars, XTotalCount: Number(result.XTotalCount)}))
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
 
-useEffect(() => {setPage(page)}, [])
+
+useEffect(() => {setPage(page => page)}, [])
 console.log(state.cars)
 
-  /*useEffect(() => {
+
+function nextPage() {
+   setPage(page + 1)
+}
+
+function previousPage() {
+    if (page>1){
+    setPage(page - 1)
+    }
+}
+
+    return(
+        <GarageContainer>
+            <CarOptions>
+               <div>
+               <Create/>
+                </div>
+                <div>
+                <Update/>
+                </div>
+            </CarOptions>
+            <AllCarControls>
+                <button>race</button>
+                <button>reset</button>
+                <button>generate</button>
+            </AllCarControls>
+            <div>
+                <button onClick={previousPage}>previous</button>
+                <button onClick={nextPage}>next</button>
+            </div>
+            <GarageLine s={state} p={page}/>
+            
+           
+        </GarageContainer>
+    )
+
+}
+
+ /*useEffect(() => {
      getCars(1)
     }, [])*/
  
@@ -88,46 +124,5 @@ function get2Cars(){
     .then(getCars)
     .catch( (error: ErrorOptions | undefined) => {throw new Error("Error in car generation", error)})
 }*/
-
-
-function nextPage() {
-   setPage(page + 1)
-}
-
-function previousPage() {
-    if (page>1){
-    setPage(page - 1)
-    }
-}
-
-    return(
-        <GarageContainer>
-            <CarOptions>
-               <div>
-               <Create/>
-                </div>
-                <div>
-                <Update/>
-                </div>
-            </CarOptions>
-            <AllCarControls>
-                <button>race</button>
-                <button>reset</button>
-                <button>generate</button>
-                <Race/>
-                <Reset/>
-                <Generate/>
-            </AllCarControls>
-            <div>
-                <button onClick={previousPage}>previous</button>
-                <button onClick={nextPage}>next</button>
-            </div>
-            <GarageLine s={state} p={page}/>
-            
-           
-        </GarageContainer>
-    )
-
-}
 
 

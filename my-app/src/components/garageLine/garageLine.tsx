@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { getCars } from "../garage/garage";
-import { ICar, TCars } from "../types/types";
+//import { useEffect } from "react";
+//import { getCars } from "../garage/garage";
+import { ICar } from "../types/types";
 import CarInstance from "./carInstance";
 
 export default function GarageLine(props: {s: { cars: Array<ICar>, XTotalCount: number}, p: number}){

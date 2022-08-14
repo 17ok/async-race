@@ -1,6 +1,6 @@
 
 import { Endpoints } from "../../helpers/url";
-import { ICar, TCars } from "../types/types";
+import { ICar } from "../types/types";
 //export const MyContext = React.createContext();
 
 export const initialState = {
